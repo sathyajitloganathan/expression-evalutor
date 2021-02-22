@@ -1,6 +1,7 @@
-const evaluator = (ask, bid, tozTog, expression) => {
+const evaluator = (x, y, z, expression) => {
     try {
-        const args = ["ask", "bid", "tozTog"]
+        // include variables passed as arguments here so the expression assumes values for this is provided
+        const args = ["x", "y", "z"]
         const variables = {}
 
         const results = expression.split("\n")
@@ -24,7 +25,7 @@ const evaluator = (ask, bid, tozTog, expression) => {
             })
 
             // return variables
-            return results[results.length - 1]
+            return results[ results.length - 1 ]
 
     } catch(err) {
         throw err
@@ -32,16 +33,16 @@ const evaluator = (ask, bid, tozTog, expression) => {
 }
 
 const expression2 = `
-    midPrice = (ask + bid)/2
-    midPriceFor1g = midPrice*tozTog
-    bid = midPriceFor1g
+    a = (x + y)/2
+    b = a*z
+    res = b
 `
 
 const expression = `
-    midPrice = (ask + bid)/2 //5
-    midPriceFor1g = midPrice*tozTog-2
-    # asdasd
-    bid = midPriceFor1g - 2
+    a = (x + y)/2
+    b = a*z-2
+    # This is a comment
+    res = b - 2
 `
 
 const result = evaluator(5,5,4, expression2)
