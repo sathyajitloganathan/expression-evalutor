@@ -5,7 +5,7 @@ const evaluator = (x, y, z, expression) => {
         const variables = {}
 
         const results = expression.split("\n")
-            .filter(t => t.trim() != '' && t.trim()[0] != '#' )
+            .filter(t => t.trim() != '' && t.trim()[0] != '#' ) // This removes comments from processing (Assumes line starts with #)
             .map(e => {
                 const line = e.trim()
                 let [ LHS, RHS ] = [ line.split('=')[0].trim(), line.split('=')[1].trim() ]
